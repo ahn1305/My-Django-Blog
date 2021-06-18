@@ -25,7 +25,7 @@ SECRET_KEY = '2umzpi4#0!dxak19ht&k0(xwxl=xw=e1!)9js&-6#o+^ur(t4u'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['thdjangoblog.pythonanywhere.com']
 
 
 # Application definition
@@ -37,7 +37,8 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'blogapp.apps.BlogappConfig'
+    'blogapp.apps.BlogappConfig',
+    'rest_framework'
 ]
 
 MIDDLEWARE = [
@@ -123,7 +124,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static')
-]
+STATIC_ROOT = '/home/thdjangoblog/My-Django-Blog/static'
+
+DEFAULT_AUTO_FIELD = 'django.db.models.AutoField'
 
