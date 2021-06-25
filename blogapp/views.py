@@ -8,6 +8,7 @@ from rest_framework.views import APIView
 
 from .serializers import PostSerializer
 from rest_framework.generics import ListCreateAPIView, RetrieveUpdateDestroyAPIView
+from django.contrib.auth.mixins import LoginRequiredMixin
 
 
 
@@ -33,14 +34,14 @@ def search(request):
     return render(request,'index.html',{'blogapp':result})
 
 #https://djangostars.com/blog/rest-apis-django-development/
-class post_list(ListCreateAPIView):
+class post_list(LoginRequiredMixin,ListCreateAPIView):
     """
     API view to retrieve list of posts or create new
     """
     serializer_class = PostSerializer
     queryset = Post.objects.all()
 
-class post_details(RetrieveUpdateDestroyAPIView):
+class post_details(LoginRequiredMixin,RetrieveUpdateDestroyAPIView):
     """
     API view to retrieve, update or delete post
     """
